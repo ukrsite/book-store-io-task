@@ -29,7 +29,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CsvStorageImplTest {
 
-    static final String EOL = "\n";
+    static final String EOL = System.lineSeparator();
     private static CsvStorage csvStorage;
     private static Mapper mapper;
 
@@ -72,9 +72,9 @@ class CsvStorageImplTest {
     public static Stream<Arguments> casesReadClient() {
         return Stream.of(
                 Arguments.of(
-                        "src/test/resources/service/clients.csv", "cp1251", "_", ";", "false",
+                        "src/test/resources/service/clients.csv", "utf-8", "_", ";", "false",
                         List.of(
-                                new Client(3, "Client15@acw.com", "i$25#21!ї", "Клієнт$12", new BigDecimal("1217")),
+                                new Client(6, "Client12@acw.com", "ш#25#21&ї", "Клієнт#12", new BigDecimal("1585")),
                                 new Client(0, "", "", "", null),
                                 new Client(0, null, null, null, null))
                 )
@@ -106,9 +106,9 @@ class CsvStorageImplTest {
     public static Stream<Arguments> casesReadEmployee() {
         return Stream.of(
                 Arguments.of(
-                        "src/test/resources/service/employees.csv", "cp1251", "'", ";", "false",
+                        "src/test/resources/service/employees.csv", "utf-8", "'", ";", "false",
                         List.of(
-                                new Employee(4, "rakili@vpa.com", "еY$60;25,IL", "Ракіль", "111-602-23-00", LocalDate.parse("1992-11-12")),
+                                new Employee(1, "admin@vpa.com", "kY$60;25,IL", "Адмінь", "111-602-23-00", LocalDate.parse("1996-07-03")),
                                 new Employee(0, "", "", "", "", null),
                                 new Employee(0, null, null, null, null, null)
                         )
@@ -142,18 +142,18 @@ class CsvStorageImplTest {
                 Arguments.of(
                         "src/test/resources/service/books.csv", "cp1251", "'", ";", "false",
                         List.of(
-                                new Book(13, "The Stranger", "Philosophical Fiction",
-                                        AgeGroup.ADULT, BigDecimal.valueOf(8.75), LocalDate.parse("2021-11-01"),
-                                        "Albert Camus", 123, "Existentialism", "A mans sense of alienation",
-                                        Language.FRENCH),
+                                new Book(1, "The Great Gatsby", "Classics",
+                                        AgeGroup.ADULT, BigDecimal.valueOf(12.99), LocalDate.parse("2022-09-04"),
+                                        "F. Scott Fitzgerald", 180, "Roaring Twenties", "A tragic love story",
+                                        Language.ENGLISH),
                                 new Book(0, "", "",
                                         null, null, null,
                                         "", 0, "", "",
                                         null),
-                                new Book(27, "Moby-Dick", "Adventure",
-                                        AgeGroup.ADULT, BigDecimal.valueOf(13.52), LocalDate.parse("2022-03-08"),
-                                        "Herman Melville", 625, "Whaling", "The pursuit of the white whale",
-                                        Language.ENGLISH),
+                                new Book(6, "The Wind-Up Bird Chronicle", "Contemporary Fiction",
+                                        AgeGroup.ADULT, BigDecimal.valueOf(12.25), LocalDate.parse("2022-01-05"),
+                                        "Haruki Murakami", 607, "Surrealism", "A mans search for his missing wife",
+                                        Language.JAPANESE),
                                 new Book(0, null, null,
                                         null, null, null,
                                         null, 0, null, null,
@@ -189,7 +189,7 @@ class CsvStorageImplTest {
                 Arguments.of(
                         "src/test/resources/service/orders.csv", "cp1251", "'", ";", "false",
                         List.of(
-                                new Order(4, 3, 1, 5, 20, LocalDateTime.parse("2021-11-11T10:10"), new BigDecimal("140")),
+                                new Order(1, 1, 2, 9, 12, LocalDateTime.parse("2022-09-04T00:00"), new BigDecimal("114")),
                                 new Order(0, 0, 0, 0, 0, null, null),
                                 new Order(0, 0, 0, 0, 0, null, null)
                         )
@@ -224,7 +224,7 @@ class CsvStorageImplTest {
                 Arguments.of(
                         "1,a@a.a,p,n,1" + EOL +
                                 "1,\"\",\"\",\"\"," + EOL +
-                                ",,,,",
+                                ",,,," + EOL,
                         List.of(
                                 new Client(1, "a@a.a", "p", "n", new BigDecimal("1")),
                                 new Client(1, "", "", "", null),
@@ -250,9 +250,9 @@ class CsvStorageImplTest {
         return Stream.of(
                 Arguments.of(
                         "src/test/resources/service/clientsw.csv",
-                        "cp1251", "_", ";", "false",
+                        "utf-8", "_", ";", "false",
                         List.of(
-                                new Client(3, "Client15@acw.com", "i$25#21!ї", "_Клієнт$12_", new BigDecimal("1217")),
+                                new Client(6, "Client12@acw.com", "ш#25#21&ї", "_Клієнт#12_", new BigDecimal("1585")),
                                 new Client(0, "__", "__", "__", null),
                                 new Client(0, null, null, null, null))
                 )
@@ -288,9 +288,9 @@ class CsvStorageImplTest {
         return Stream.of(
                 Arguments.of(
                         "src/test/resources/service/employeesw.csv",
-                        "cp1251", "'", ";", "false",
+                        "utf-8", "'", ";", "false",
                         List.of(
-                                new Employee(4, "rakili@vpa.com", "'еY$60;25,IL'", "Ракіль", "111-602-23-00", LocalDate.parse("1992-11-12")),
+                                new Employee(1, "admin@vpa.com", "'kY$60;25,IL'", "Адмінь", "111-602-23-00", LocalDate.parse("1996-07-03")),
                                 new Employee(0, "''", "''", "''", "''", null),
                                 new Employee(0, null, null, null, null, null)
                         )
@@ -326,16 +326,16 @@ class CsvStorageImplTest {
     public static Stream<Arguments> casesWriteBook() {
         return Stream.of(
                 Arguments.of(
-                        "src/test/resources/service/booksw.csv", "cp1251", "'", ";", "false",
+                        "src/test/resources/service/booksw.csv", "utf-8", "'", ";", "false",
                         List.of(
-                                new Book(13, "The Stranger", "Philosophical Fiction",
-                                        AgeGroup.ADULT, BigDecimal.valueOf(8.75), LocalDate.parse("2021-11-01"),
-                                        "Albert Camus", 123, "Existentialism", "A mans sense of alienation",
-                                        Language.FRENCH),
-                                new Book(27, "Moby-Dick", "Adventure",
-                                        AgeGroup.ADULT, BigDecimal.valueOf(13.52), LocalDate.parse("2022-03-08"),
-                                        "'Herman Melville'", 625, "Whaling", "'The pursuit of the white whale'",
+                                new Book(1, "The Great Gatsby", "Classics",
+                                        AgeGroup.ADULT, BigDecimal.valueOf(12.99), LocalDate.parse("2022-09-04"),
+                                        "F. Scott Fitzgerald", 180, "Roaring Twenties", "A tragic love story",
                                         Language.ENGLISH),
+                                new Book(6, "The Wind-Up Bird Chronicle", "'Contemporary Fiction'",
+                                        AgeGroup.ADULT, BigDecimal.valueOf(12.25), LocalDate.parse("2022-01-05"),
+                                        "'Haruki Murakami", 607, "Surrealism", "A mans search for his missing wife",
+                                        Language.JAPANESE),
                                 new Book(0, "", "",
                                         null, null, null,
                                         "", 0, "", "",
@@ -376,9 +376,9 @@ class CsvStorageImplTest {
     public static Stream<Arguments> casesWriteOrder() {
         return Stream.of(
                 Arguments.of(
-                        "src/test/resources/service/ordersw.csv", "cp1251", "'", ";", "false",
+                        "src/test/resources/service/ordersw.csv", "utf-8", "'", ";", "false",
                         List.of(
-                                new Order(4, 3, 1, 5, 20, LocalDateTime.parse("2021-11-11T10:10"), new BigDecimal("140")),
+                                new Order(1, 1, 2, 9, 12, LocalDateTime.parse("2022-09-04T00:00"), new BigDecimal("114")),
                                 new Order(0, 0, 0, 0, 0, null, null),
                                 new Order(0, 0, 0, 0, 0, null, null)
                         )
