@@ -35,7 +35,7 @@ Then, proceed to the `CsvStorageImpl` class and implement its content:
 * `<T> List<T> read(InputStream source, Function<String[], T> mapper) throws IOException`  
   Returns the contents of the received file as a list of objects. The operation algorithm is as follows: It reads lines
   with data descriptions through the received source stream. Then, it splits each string into an array of `String`
-  elements using valuesDelimiter. Then, it converts the resulting array into an object of the `T` type using the mapper
+  elements using valuesDelimiter configuration property. Then, it converts the resulting array into an object of the `T` type using the mapper
   parameter, a function that creates an object of the `T` type with field values taken from the given array.
 
 * `<T> void write(OutputStream dest, List<T> value, Function<T, String[]> mapper) throws IOException`  
