@@ -9,7 +9,7 @@ Duration: **2** hours
 In this exercise, you will implement "Book Store" with support for reading/writing entities from/to csv files.
 The class diagram of the Domain model is shown in the figure below:
 
-![book-diagram-v1.png](book-diagram-v1.png)
+![diagram.png](diagram.png)
 
 You are also given a description of the following interfaces and classes:
 
