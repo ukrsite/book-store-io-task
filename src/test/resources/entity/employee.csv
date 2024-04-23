@@ -1,4 +1,4 @@
-id,email,password,name,phone,dateOfBirth,expected
+id,email,password,name,phone,birthDate,expected
 1,admin@vpa.com,kY$60#25#IL,Admin,111-602-23-00,1996-07-03,"Employee{id=1, email='admin@vpa.com', name='Admin', phone='111-602-23-00', dateOfBirth=1996-07-03}"
 2,manager@vpa.com,pk%47#82%Fx,Monger,111-402-57-21,1992-10-11,"Employee{id=2, email='manager@vpa.com', name='Monger', phone='111-402-57-21', dateOfBirth=1992-10-11}"
 3,alice@vpa.com,\N#00$46$nj,Alice,111-552-26-31,1980-09-11,"Employee{id=3, email='alice@vpa.com', name='Alice', phone='111-552-26-31', dateOfBirth=1980-09-11}"

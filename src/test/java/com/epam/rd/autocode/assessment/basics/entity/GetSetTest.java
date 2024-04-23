@@ -20,7 +20,7 @@ public class GetSetTest {
         verifier.verify("genre", "Horror", "Detective");
         verifier.verify("ageGroup", AgeGroup.ADULT, AgeGroup.CHILD);
         verifier.verify("price", BigDecimal.ONE, BigDecimal.ZERO);
-        verifier.verify("publicationYear", LocalDate.now(), LocalDate.MIN);
+        verifier.verify("publicationDate", LocalDate.now(), LocalDate.MIN);
         verifier.verify("author", "Alex", "Mark");
         verifier.verify("numberOfPages", 111, 222);
         verifier.verify("characteristics", "some", "info");
