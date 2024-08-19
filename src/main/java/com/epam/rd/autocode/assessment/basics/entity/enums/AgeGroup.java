@@ -1,5 +1,11 @@
 package com.epam.rd.autocode.assessment.basics.entity.enums;
 
-public enum AgeGroup{
-    // place your code here
+import java.io.Serializable;
+
+public enum AgeGroup implements Serializable {
+  // place your code here
+  CHILD,
+  TEEN,
+  ADULT,
+  OTHER
 }

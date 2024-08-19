@@ -52,6 +52,7 @@ class MapperTest {
 
     public static Stream<Arguments> casesCsvToEmployee() {
         return Stream.of(
+                Arguments.of(null, null),
                 Arguments.of(new String[]{"1", "a@a.a", "p", "n", "1", "1111-12-22"},
                         new Employee(1, "a@a.a", "p", "n", "1", LocalDate.parse("1111-12-22"))),
                 Arguments.of(new String[]{"1", "admin@vpa.com", "kY60#25#IL", "Admin", "111-602-23-00", "1996-07-03"},
@@ -59,8 +60,7 @@ class MapperTest {
                 Arguments.of(new String[]{"", "\"\"", "\"\"", "\"\"", "\"\"", ""},
                         new Employee(0, "", "", "", "", null)),
                 Arguments.of(new String[]{"", "", "", "", "", ""},
-                        new Employee(0, null, null, null, null, null)),
-                Arguments.of(null, null)
+                        new Employee(0, null, null, null, null, null))
         );
     }
 

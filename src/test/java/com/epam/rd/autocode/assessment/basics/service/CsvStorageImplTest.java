@@ -189,7 +189,7 @@ class CsvStorageImplTest {
                 Arguments.of(
                         "src/test/resources/service/orders.csv", "cp1251", "'", ";", "false",
                         List.of(
-                                new Order(1, 1, 2, 9, 12, LocalDateTime.parse("2022-09-04T00:00"), new BigDecimal("114")),
+                                new Order(4, 3, 1, 5, 20, LocalDateTime.parse("2021-11-11T10:10"), new BigDecimal("140")),
                                 new Order(0, 0, 0, 0, 0, null, null),
                                 new Order(0, 0, 0, 0, 0, null, null)
                         )
