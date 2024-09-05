@@ -204,9 +204,6 @@ public class MapperImpl implements Mapper{
 
   @Override
   public String[] employeeToCsv(Employee employee) {
-  /*Gets object of Employee with some filled parameters.
-  It parses text representation of values and converts to proper data types
-  according to the requirements in Details section.*/
     if (employee == null) {
       return null;
     }
